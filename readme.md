@@ -8,10 +8,55 @@ ROS 2 have some concepts that are crucial to understand: nodes, topics, services
 
 > If you have not installed ROS 2 on your computer, go to [Ubuntu (Debian packages)](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html) for Ubuntu 24.04. If you are using other Linux distributions, I believe you know how to install ROS 2 already.
 
-We will use the `turtle_sim` to learn how to write a publisher and a subscriber for some topics.
+All the code for this section will be under `src/my_robot_controller` (for Python) and `src/my_robot_controller_cpp` (for C++).
 
-We will write a complete controller to control the turtle.
+**Key knowledge points**
+
+- We will create a basic node with timer callback.
+
+- We will use the `turtle_sim` to learn how to write a publisher and a subscriber for some topics.
+
+- We will write a complete controller to control the turtle.
+
+- We will create a launch file to run everything in one command.
+
+First of all, you need a ROS 2 workspace. It can be any empty folder, and you will create an `src` folder inside it. Let's assume the empty folder is called `ros2_course_ws`, and you should have only one folder `src` in it. Run `colcon build` under the `ros2_course_ws`, and it should succeed and will create two folders `install` and `build`. Add the following two lines to your `~/.bashrc` (modify the path accordingly).
+
+```bash
+source /opt/ros/jazzy/setup.bash
+source /path/to/your/ros2_course_ws/install/setup.bash
+```
+
+To create a C++ package, go into the `src` folder and run the following command.
+
+```bash
+ros2 pkg create my_robot_controller_cpp --build-type ament_cmake --dependencies rclcpp
+```
+
+If you are using VSCode, add the include path `/opt/ros/jazzy/include/**` to your workspace's `c_cpp_properties.json` under `"includePath":`, so that you have autocompletion and proper code highlight.
+
+For C++ executables, the executable's name is determined by CMakeLists.txt in the `add_executable()` command. For Python, the executable's name is defined in the `setup.py` file under `entry_points`.
+
+To create a Python package, go into the `src` folder and run the following command.
+
+```bash
+ros2 pkg create my_robot_controller --build-type ament_cmake --dependencies rclpy
+```
+
+If you want to use some other Python packages, installing the packages to the system python is NOT recommended. In addition, ROS 2 does NOT work well with conda virtual environment. The simpliest way to use a Python virtual environment with ROS 2 is using the following command.
+
+```bash
+python3 -m venv ros2_venv
+source ros2_venv/bin/activate
+```
+
+To learn details about the Python code, please visit the [readme.md](src/my_robot_controller/readme.md) in the `src/my_robot_controller` folder.
+
+To learn details about the C++ code, please visit the [readme.md](src/my_robot_controller_cpp/readme.md) in the `src/my_robot_controller_cpp` folder. 
 
 
 ## 2. Robot URDF and visualization
+
+The code for this section will be in `src/my_robot_description`.
+
 

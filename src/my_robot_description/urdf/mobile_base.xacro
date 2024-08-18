@@ -59,7 +59,7 @@
     <link name="front_caster_wheel">
         <visual>
             <geometry>
-                <sphere radius="${wheel_radius}"/>
+                <sphere radius="${wheel_radius / 2}"/>
             </geometry>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <material name="grey" />

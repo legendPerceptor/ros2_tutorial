@@ -10,6 +10,8 @@ ROS 2 have some concepts that are crucial to understand: nodes, topics, services
 
 All the code for this section will be under `src/my_robot_controller` (for Python) and `src/my_robot_controller_cpp` (for C++).
 
+> Because ROS 2 development requires many terminal windows. I recommend you to install Terminator by `sudo apt install terminator`, which is easier to use than tmux.
+
 **Key knowledge points**
 
 - We will create a basic node with timer callback.
@@ -57,6 +59,26 @@ To learn details about the C++ code, please visit the [readme.md](src/my_robot_c
 
 ## 2. Robot URDF and visualization
 
-The code for this section will be in `src/my_robot_description`.
+The code for this section will be in `src/my_robot_description`. Please navigate to the [readme.md](src/my_robot_description/readme.md) inside src/my_robot_description for more detailed information.
 
+We will be using Gazebo Sim (not the classic Gazebo), so follow the [official installation guide](https://gazebosim.org/api/sim/8/install.html) to install it. For Ubuntu 24.04 users, you can just run the following commands.
+
+```bash
+sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+sudo apt-get update
+```
+
+Then just install gazebo. This software is separate from ROS 2 but it has great integration with ROS 2, and that's why we chose this software for robot simulation.
+
+```bash
+# I used version 8, but you should be able to use TAB to see what version is available.
+sudo apt install libgz-sim8-dev
+```
+
+You would also need xacro for URDF files and ros-gz-sim pakcage. Xacro enhances URDFs, allowing you to define complex macro and reuse code with function calls. The ros-gz-sim package allows gazebo to interact with ROS 2.
+
+```bash
+sudo apt install ros-jazzy-xacro ros-jazzy-gz-sim
+```
 

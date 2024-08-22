@@ -1,3 +1,4 @@
+# URDF and gazebo simulation
 
 To simulate the robot in Gazebo, we first need to use the robot_state_publisher to convert the xacro file into a URDF file.
 
@@ -35,4 +36,10 @@ We use the following command to load the URDF into gazebo.
 
 ```bash
 gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req 'sdf_filename: "/home/yuanjian/Development/ros2_course_ws/src/my_robot_description/urdf_online/rrbot_converted.urdf", name: "my_model"'
+```
+
+To insert our basic-shaped car model into the scene, run the following command. Make sure the `ros2 launch ros_gz_sim gz_sim.launch.py` command is run under the `src/my_robot_description` folder.
+
+```bash
+gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req 'sdf_filename: "urdf/converted.urdf", name: "my_model"'
 ```

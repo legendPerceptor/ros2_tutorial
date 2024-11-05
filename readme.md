@@ -42,7 +42,7 @@ For C++ executables, the executable's name is determined by CMakeLists.txt in th
 To create a Python package, go into the `src` folder and run the following command.
 
 ```bash
-ros2 pkg create my_robot_controller --build-type ament_cmake --dependencies rclpy
+ros2 pkg create my_robot_controller --build-type ament_python --dependencies rclpy
 ```
 
 If you want to use some other Python packages, installing the packages to the system python is NOT recommended. In addition, ROS 2 does NOT work well with conda virtual environment. The simpliest way to use a Python virtual environment with ROS 2 is using the following command.
